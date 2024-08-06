@@ -1,0 +1,9 @@
+package main.com;
+
+public class Database {
+	static int id =0;
+	
+	public void insertData(String name, String fname, String mname, String qualification, long num) {
+		
+	}
+}

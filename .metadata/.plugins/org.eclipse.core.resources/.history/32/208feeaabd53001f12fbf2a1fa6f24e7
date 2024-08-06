@@ -1,0 +1,29 @@
+package main.com;
+import java.sql.*;
+public class Database {
+	private static int id =0;
+	private String url="jdbc:mysql://localhost:3306/survey";
+	private String Username = "root";
+	private String pass = "";
+	private String  query = "INSERT INTO data (id, Name, Father_Name, Mother_Name, qualification, Number) VALUES (?, ?, ?, ?, ?, ?)";
+	
+	public void insertData(String name, String fname, String mname, String qualification, long num) throws Exception {
+		id++;
+		
+		Class.forName("com.mysql.cj.jdbc.Driver");
+		Connection con= DriverManager.getConnection(url,Username,pass);
+		
+		PreparedStatement ps = con.prepareStatement(query);
+		ps.setInt(1, id);
+		ps.setString(2, name);
+		ps.setString(3, fname);
+		ps.setString(4, mname);
+		ps.setString(5, qualification);
+		ps.setLong(6, num);
+		
+		ps.executeUpdate();
+		
+		System.out.println("Successfully Data  Stored !!");
+		
+	}
+}
